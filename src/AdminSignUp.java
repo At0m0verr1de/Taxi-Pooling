@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class AdminSignUp extends JFrame implements ActionListener {
+public class AdminSignUp implements ActionListener {
     JFrame f;
     JLabel l1, l2, l3, l4;
     JTextField t1, t2, t3;

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class UserLogin extends JFrame implements ActionListener {
+public class UserLogin implements ActionListener, Login {
     JFrame f;
     JLabel l1, l2, l3, l4, l5;
     JTextField t1;
@@ -68,6 +68,12 @@ public class UserLogin extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ee) {
+        login(ee);
+    }
+
+    @Override
+    public void login(ActionEvent ee) {
+        // TODO Auto-generated method stub
         if (ee.getSource() == b1) {
             try {
                 ConnectionClass obj = new ConnectionClass();
@@ -98,4 +104,5 @@ public class UserLogin extends JFrame implements ActionListener {
             new App();
         }
     }
+
 }

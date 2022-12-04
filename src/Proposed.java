@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class Proposed extends JFrame implements ActionListener {
+public class Proposed implements ActionListener {
     JFrame f;
     JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13;
+    JLabel la, lb, lc, ld;
     JButton b1, b2, b3;
     UserData usr;
 
@@ -46,7 +47,7 @@ public class Proposed extends JFrame implements ActionListener {
         l5.setFont(new Font("Arial", Font.BOLD, 30));
         f.add(l5);
 
-        l6 = new JLabel("Cost (/head)");
+        l6 = new JLabel("Total Cost");
         l6.setBounds(740, 20, 500, 50);
         l6.setFont(new Font("Arial", Font.BOLD, 30));
         f.add(l6);
@@ -71,10 +72,29 @@ public class Proposed extends JFrame implements ActionListener {
         l10.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
         f.add(l10);
 
-        l11 = new JLabel(rs.getString("MemberID"));
-        l11.setBounds(500, 60, 500, 50);
-        l11.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
-        f.add(l11);
+        String mem = rs.getString("MemberID");
+        mem += "a a a";
+        String[] mems = mem.split(" ");
+        System.out.println(Arrays.toString(mems));
+        la = new JLabel(mems[0].substring(0, mems[0].length() - 1));
+        la.setBounds(500, 60, 500, 50);
+        la.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
+        f.add(la);
+
+        lb = new JLabel(mems[1].substring(0, mems[1].length() - 1));
+        lb.setBounds(500, 90, 500, 50);
+        lb.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
+        f.add(lb);
+
+        lc = new JLabel(mems[2].substring(0, mems[2].length() - 1));
+        lc.setBounds(500, 120, 500, 50);
+        lc.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
+        f.add(lc);
+
+        ld = new JLabel(mems[3].substring(0, mems[3].length() - 1));
+        ld.setBounds(500, 150, 500, 50);
+        ld.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
+        f.add(ld);
 
         l12 = new JLabel(rs.getString("Cost"));
         l12.setBounds(740, 60, 500, 50);
@@ -115,12 +135,21 @@ public class Proposed extends JFrame implements ActionListener {
                 ResultSet rs = obj.stm.executeQuery(query);
                 rs.next();
                 String[] members = rs.getString("MemberID").split(" ");
+                int count = 0;
                 for (int i = 0; i < members.length; i++) {
                     if (members[i].substring(0, members[i].length() - 1).equals(usr.getBITSID())) {
                         members[i] = usr.getBITSID() + "A";
-                        break;
+                    }
+                    if (members[i].charAt(members[i].length() - 1) == 'A') {
+                        count++;
                     }
                 }
+
+                if (count == members.length) {
+                    query = "UPDATE proposed SET Status = 'Scheduled' WHERE MemberID like '%" + usr.getBITSID() + "%';";
+                    obj.stm.executeUpdate(query);
+                }
+
                 String newMembers = "";
                 for (int i = 0; i < members.length; i++) {
                     newMembers += members[i] + " ";

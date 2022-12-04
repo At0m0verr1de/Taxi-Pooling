@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class Ride extends JFrame implements ActionListener {
+public class Ride implements ActionListener {
     JFrame f;
     JLabel l1, l2, l3, l4, l5;
     JTextField t1, t2, t3, t4, t5;

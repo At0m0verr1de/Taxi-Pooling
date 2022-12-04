@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class Student extends JFrame implements ActionListener, Runnable {
+public class Student implements ActionListener, Runnable {
     JFrame f;
     JButton b1, b2, b3, b4;
     UserData usr;

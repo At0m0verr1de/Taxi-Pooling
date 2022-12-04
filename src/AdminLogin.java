@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class AdminLogin extends JFrame implements ActionListener {
+public class AdminLogin implements ActionListener, Login {
     JPanel panel;
     JFrame f;
     JLabel l1, l2, l3, l4, l5;
@@ -60,10 +60,15 @@ public class AdminLogin extends JFrame implements ActionListener {
         f.setVisible(true);
         f.setSize(580, 350);
         f.setResizable(false);
-
     }
 
     public void actionPerformed(ActionEvent ee) {
+        login(ee);
+    }
+
+    @Override
+    public void login(ActionEvent ee) {
+        // TODO Auto-generated method stub
         if (ee.getSource() == b1) {
             try {
                 ConnectionClass obj = new ConnectionClass();

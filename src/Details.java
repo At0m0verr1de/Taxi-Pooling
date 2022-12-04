@@ -6,7 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.*;
 
-public class Details extends JFrame implements ActionListener {
+public class Details implements ActionListener {
     JFrame f;
     JButton b1, b2, b3, b4;
 
