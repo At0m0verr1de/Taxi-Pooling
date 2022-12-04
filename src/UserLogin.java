@@ -9,7 +9,7 @@ public class UserLogin extends JFrame implements ActionListener {
     JLabel l1, l2, l3, l4, l5;
     JTextField t1;
     JPasswordField pf1;
-    JButton b1, b2;
+    JButton b1, b2, b3;
 
     UserLogin() {
         f = new JFrame("Login Account");
@@ -44,20 +44,25 @@ public class UserLogin extends JFrame implements ActionListener {
         pf1.setBounds(320, 170, 150, 30);
         l1.add(pf1);
 
-        b1 = new JButton("Login");
-        b1.setBounds(120, 220, 150, 40);
-
         b2 = new JButton("SignUp");
-        b2.setBounds(320, 220, 150, 40);
+        b2.setBounds(120, 220, 150, 40);
+
+        b1 = new JButton("Login");
+        b1.setBounds(320, 220, 150, 40);
+
+        b3 = new JButton("Back");
+        b3.setBounds(220, 270, 150, 40);
+        f.add(b3);
 
         l1.add(b1);
         l1.add(b2);
 
         b1.addActionListener(this);
         b2.addActionListener(this);
+        b3.addActionListener(this);
 
         f.setVisible(true);
-        f.setSize(580, 350);
+        f.setSize(580, 400);
         f.setResizable(false);
 
     }
@@ -75,7 +80,8 @@ public class UserLogin extends JFrame implements ActionListener {
                 if (rs.next()) {
                     f.setVisible(false);
                     UserData currUser = new UserData(username1);
-                    new Student(currUser);
+                    Thread t1 = new Thread(new Student(currUser));
+                    t1.start();
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid Login Details");
                     f.setVisible(false);
@@ -87,6 +93,9 @@ public class UserLogin extends JFrame implements ActionListener {
         } else if (ee.getSource() == b2) {
             f.setVisible(false);
             new UserSignUp();
+        } else if (ee.getSource() == b3) {
+            f.setVisible(false);
+            new App();
         }
     }
 }

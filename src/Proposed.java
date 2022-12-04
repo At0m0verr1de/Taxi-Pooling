@@ -22,80 +22,80 @@ public class Proposed extends JFrame implements ActionListener {
         f.setLayout(null);
 
         l1 = new JLabel("From");
-        l1.setBounds(190, 30, 500, 50);
+        l1.setBounds(20, 20, 500, 50);
         l1.setFont(new Font("Arial", Font.BOLD, 30));
         f.add(l1);
 
         l2 = new JLabel("To");
-        l2.setBounds(190, 30, 500, 50);
+        l2.setBounds(140, 20, 500, 50);
         l2.setFont(new Font("Arial", Font.BOLD, 30));
         f.add(l2);
 
         l3 = new JLabel("Date");
-        l3.setBounds(190, 30, 500, 50);
+        l3.setBounds(260, 20, 500, 50);
         l3.setFont(new Font("Arial", Font.BOLD, 30));
         f.add(l3);
 
         l4 = new JLabel("Time");
-        l4.setBounds(190, 30, 500, 50);
+        l4.setBounds(380, 20, 500, 50);
         l4.setFont(new Font("Arial", Font.BOLD, 30));
         f.add(l4);
 
         l5 = new JLabel("Members");
-        l5.setBounds(190, 30, 500, 50);
+        l5.setBounds(500, 20, 500, 50);
         l5.setFont(new Font("Arial", Font.BOLD, 30));
         f.add(l5);
 
         l6 = new JLabel("Cost (/head)");
-        l6.setBounds(190, 30, 500, 50);
+        l6.setBounds(740, 20, 500, 50);
         l6.setFont(new Font("Arial", Font.BOLD, 30));
         f.add(l6);
 
         l7 = new JLabel(rs.getString("Source"));
-        l7.setBounds(190, 30, 500, 50);
-        l7.setFont(new Font("Arial", Font.BOLD, 30));
+        l7.setBounds(20, 60, 500, 50);
+        l7.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
         f.add(l7);
 
         l8 = new JLabel(rs.getString("Destination"));
-        l8.setBounds(190, 30, 500, 50);
-        l8.setFont(new Font("Arial", Font.BOLD, 30));
+        l8.setBounds(140, 60, 500, 50);
+        l8.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
         f.add(l8);
 
         l9 = new JLabel(rs.getString("Date"));
-        l9.setBounds(190, 30, 500, 50);
-        l9.setFont(new Font("Arial", Font.BOLD, 30));
+        l9.setBounds(260, 60, 500, 50);
+        l9.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
         f.add(l9);
 
         l10 = new JLabel(rs.getString("Time"));
-        l10.setBounds(190, 30, 500, 50);
-        l10.setFont(new Font("Arial", Font.BOLD, 30));
+        l10.setBounds(380, 60, 500, 50);
+        l10.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
         f.add(l10);
 
         l11 = new JLabel(rs.getString("MemberID"));
-        l11.setBounds(190, 30, 500, 50);
-        l11.setFont(new Font("Arial", Font.BOLD, 30));
+        l11.setBounds(500, 60, 500, 50);
+        l11.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
         f.add(l11);
 
         l12 = new JLabel(rs.getString("Cost"));
-        l12.setBounds(190, 30, 500, 50);
-        l12.setFont(new Font("Arial", Font.BOLD, 30));
+        l12.setBounds(740, 60, 500, 50);
+        l12.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 25));
         f.add(l12);
 
         l13 = new JLabel("Accept Ride?");
-        l13.setBounds(190, 30, 500, 50);
-        l13.setFont(new Font("Arial", Font.BOLD, 30));
+        l13.setBounds(50, 200, 500, 50);
+        l13.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 30));
         f.add(l13);
 
         b1 = new JButton("Yes");
-        b1.setBounds(500, 500, 120, 30);
+        b1.setBounds(100, 250, 120, 30);
         f.add(b1);
 
         b2 = new JButton("No");
-        b2.setBounds(600, 600, 120, 30);
+        b2.setBounds(250, 250, 120, 30);
         f.add(b2);
 
         b3 = new JButton("Back");
-        b3.setBounds(700, 700, 120, 30);
+        b3.setBounds(400, 250, 120, 30);
         f.add(b3);
 
         b1.addActionListener(this);
@@ -104,7 +104,7 @@ public class Proposed extends JFrame implements ActionListener {
 
         f.getContentPane();
         f.setVisible(true);
-        f.setSize(1000, 1000);
+        f.setSize(1000, 400);
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -128,7 +128,9 @@ public class Proposed extends JFrame implements ActionListener {
                 query = "UPDATE proposed SET MemberID = '" + newMembers + "' WHERE MemberID like '%" + usr.getBITSID()
                         + "%';";
                 int aa = obj.stm.executeUpdate(query);
-                f.setVisible(false);
+                query = "SELECT * FROM proposed where MemberID like '%" + usr.getBITSID() + "%';";
+                rs = obj.stm.executeQuery(query);
+                rs.next();
 
                 if (aa == 1) {
                     JOptionPane.showMessageDialog(null, "Ride Confirmed for you. Waiting for other members.");

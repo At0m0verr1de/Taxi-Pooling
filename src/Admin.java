@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class Admin extends JFrame implements ActionListener {
+public class Admin extends JFrame implements ActionListener, Runnable {
     JFrame f;
     JButton b1, b2, b3, b4;
 
@@ -52,8 +52,18 @@ public class Admin extends JFrame implements ActionListener {
             f.setVisible(false);
             new Schedule();
         } else if (ee.getSource() == b4) {
-            f.setVisible(false);
-            new Charges();
+            try {
+                new Charges();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
+    }
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+
     }
 }

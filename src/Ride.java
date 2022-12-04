@@ -21,7 +21,7 @@ public class Ride extends JFrame implements ActionListener {
         l1.setBounds(40, 20, 100, 30);
         f.add(l1);
 
-        l2 = new JLabel("Date (MM/DD/YYYY)");
+        l2 = new JLabel("Date (MMDDYYYY)");
         l2.setBounds(40, 70, 200, 30);
         f.add(l2);
 
@@ -33,7 +33,7 @@ public class Ride extends JFrame implements ActionListener {
         l4.setBounds(40, 170, 100, 30);
         f.add(l4);
 
-        l5 = new JLabel("Time (HH:MM)");
+        l5 = new JLabel("Time (HHMM)");
         l5.setBounds(40, 220, 100, 30);
         f.add(l5);
 

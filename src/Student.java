@@ -4,12 +4,42 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.*;
 
-public class Student extends JFrame implements ActionListener {
+public class Student extends JFrame implements ActionListener, Runnable {
     JFrame f;
     JButton b1, b2, b3, b4;
     UserData usr;
 
     Student(UserData usr) {
+        this.usr = usr;
+    }
+
+    public void actionPerformed(ActionEvent ee) {
+        if (ee.getSource() == b1) {
+            f.setVisible(false);
+            new UserLogin();
+        } else if (ee.getSource() == b2) {
+            new Ride(this.usr);
+        } else if (ee.getSource() == b3) {
+            try {
+                ConnectionClass obj = new ConnectionClass();
+                String query = "SELECT * FROM proposed where MemberID like '%" + usr.getBITSID() + "%';";
+                ResultSet rs = obj.stm.executeQuery(query);
+                if (rs.next()) {
+                    new Proposed(this.usr);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No rides proposed yet");
+                    new Student(this.usr);
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
         this.usr = usr;
         f = new JFrame("Student");
         f.setBackground(Color.WHITE);
@@ -33,23 +63,5 @@ public class Student extends JFrame implements ActionListener {
         f.getContentPane();
         f.setVisible(true);
         f.setSize(390, 350);
-    }
-
-    public void actionPerformed(ActionEvent ee) {
-        if (ee.getSource() == b1) {
-            f.setVisible(false);
-            new UserLogin();
-        } else if (ee.getSource() == b2) {
-            f.setVisible(false);
-            new Ride(this.usr);
-        } else if (ee.getSource() == b3) {
-            f.setVisible(false);
-            try {
-                new Proposed(this.usr);
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
     }
 }

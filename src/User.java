@@ -37,6 +37,7 @@ public class User extends JFrame implements ActionListener {
         b2.addActionListener(this);
         b3.addActionListener(this);
         b4.addActionListener(this);
+
         f.getContentPane();
         f.setVisible(true);
         f.setSize(390, 350);
@@ -58,7 +59,12 @@ public class User extends JFrame implements ActionListener {
             new Schedule();
         } else if (ee.getSource() == b4) {
             f.setVisible(false);
-            new Charges();
+            try {
+                new Charges();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 }

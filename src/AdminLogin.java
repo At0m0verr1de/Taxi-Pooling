@@ -46,10 +46,10 @@ public class AdminLogin extends JFrame implements ActionListener {
         l1.add(pf1);
 
         b1 = new JButton("Login");
-        b1.setBounds(120, 220, 150, 40);
+        b1.setBounds(320, 220, 150, 40);
 
         b2 = new JButton("Back");
-        b2.setBounds(320, 220, 150, 40);
+        b2.setBounds(120, 220, 150, 40);
 
         l1.add(b1);
         l1.add(b2);

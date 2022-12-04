@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -47,62 +46,8 @@ public class App extends JFrame implements ActionListener {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new App();
+                new Admin();
             }
         });
     }
-
-    // public static void showMenu() {
-    // System.out.println("Enter any one of the following options:");
-    // System.out.println("S -> register yourself");
-    // System.out.println("T -> request new trip");
-    // System.out.println("C -> check details for a trip");
-    // System.out.println("A -> accept a trip");
-    // System.out.println("R -> reject a trip");
-    // }
-
-    // public static void handleInput(String input) {
-    // switch (input) {
-    // case "S":
-    // registerUser();
-    // break;
-    // case "T":
-    // // TODO: Hande trip request
-    // break;
-
-    // case "C":
-    // // TODO: Handle details check
-    // break;
-
-    // case "A":
-    // // TODO: Hande trip acceptation
-    // break;
-
-    // case "R":
-    // // TODO: Hande trip rejection
-    // break;
-
-    // default:
-    // System.out.println("Please enter a valid input");
-    // }
-    // }
-
-    // public static void registerUser() {
-    // System.out.println("Please enter your name, BITS ID no and phone number in
-    // the same order");
-    // Scanner sc = new Scanner(System.in);
-    // String name = sc.nextLine();
-    // String ID = sc.nextLine();
-    // Long phoneNo = sc.nextLong();
-    // sc.close();
-
-    // User user = new User(ID, name, phoneNo);
-    // UsersData data = new UsersData();
-    // if (data.getRegisteredUsers().contains(user)) {
-    // System.out.println("You are already registered");
-    // } else {
-    // data.addUser(user);
-    // System.out.println("You are registered!!");
-    // }
-    // }
 }
