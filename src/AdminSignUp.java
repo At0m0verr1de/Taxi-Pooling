@@ -34,15 +34,11 @@ public class AdminSignUp implements ActionListener {
 
         b1 = new JButton("Back");
         b1.setBounds(40, 140, 120, 30);
-        b1.setBackground(Color.BLACK);
-        b1.setForeground(Color.black);
         b1.addActionListener(this);
         f.add(b1);
 
         b2 = new JButton("Sign Up");
         b2.setBounds(200, 140, 120, 30);
-        b2.setBackground(Color.BLACK);
-        b2.setForeground(Color.black);
         b2.addActionListener(this);
         f.add(b2);
 

@@ -50,15 +50,11 @@ public class UserSignUp implements ActionListener {
 
         b1 = new JButton("Back");
         b1.setBounds(40, 240, 120, 30);
-        b1.setBackground(Color.BLACK);
-        b1.setForeground(Color.black);
         b1.addActionListener(this);
         f.add(b1);
 
         b2 = new JButton("Sign Up");
         b2.setBounds(200, 240, 120, 30);
-        b2.setBackground(Color.BLACK);
-        b2.setForeground(Color.black);
         b2.addActionListener(this);
         f.add(b2);
 
@@ -92,9 +88,7 @@ public class UserSignUp implements ActionListener {
                         this.f.setVisible(false);
                         this.f.setVisible(true);
                     }
-
                 }
-
             } catch (SQLIntegrityConstraintViolationException e) {
                 JOptionPane.showMessageDialog(null, "User already exists.");
             } catch (Throwable e) {
