@@ -94,7 +94,10 @@ public class UserSignUp extends JFrame implements ActionListener {
                     }
 
                 }
-            } catch (Exception e) {
+
+            } catch (SQLIntegrityConstraintViolationException e) {
+                JOptionPane.showMessageDialog(null, "User already exists.");
+            } catch (Throwable e) {
                 e.printStackTrace();
             }
         } else if (ae.getSource() == b1) {

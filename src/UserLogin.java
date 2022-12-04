@@ -5,7 +5,6 @@ import java.sql.*;
 import java.util.*;
 
 public class UserLogin extends JFrame implements ActionListener {
-    JPanel panel;
     JFrame f;
     JLabel l1, l2, l3, l4, l5;
     JTextField t1;
@@ -75,7 +74,8 @@ public class UserLogin extends JFrame implements ActionListener {
 
                 if (rs.next()) {
                     f.setVisible(false);
-                    new User();
+                    UserData currUser = new UserData(username1);
+                    new Student(currUser);
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid Login Details");
                     f.setVisible(false);

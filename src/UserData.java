@@ -2,22 +2,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserData {
-    private List<User> registeredUsers = new ArrayList<>();
+    private String BITSID = "";
+    private String Name = "";
+    private int PhoneNo = 0;
 
-    public UserData() {
-        this.registeredUsers = new ArrayList<>();
+    public UserData(String Id) {
+        this.BITSID = Id;
     }
 
-    public List<User> getRegisteredUsers() {
-        return registeredUsers;
+    public String getBITSID() {
+        return BITSID;
     }
 
-    public boolean isRegistered(User user) {
-        return this.registeredUsers.contains(user);
+    public String getName() {
+        return Name;
     }
 
-    public void addUser(User user) {
-        this.registeredUsers.add(user);
+    public int getPhoneNo() {
+        return PhoneNo;
     }
-
 }
