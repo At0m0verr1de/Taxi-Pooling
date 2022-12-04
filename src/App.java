@@ -11,7 +11,6 @@ public class App extends JFrame implements ActionListener {
 
     App() {
         f = new JFrame("BITS Cab Service");
-        f.setBackground(Color.white);
         f.setLayout(null);
 
         b1 = new JButton("Admin");

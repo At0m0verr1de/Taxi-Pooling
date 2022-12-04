@@ -74,6 +74,7 @@ public class AdminLogin implements ActionListener, Login {
                 ConnectionClass obj = new ConnectionClass();
                 String username1 = t1.getText();
                 String password1 = pf1.getText();
+
                 String query = "select * from admin where Name = '" + username1 + "' and password = '" + password1
                         + "'";
                 ResultSet rs = obj.stm.executeQuery(query);
